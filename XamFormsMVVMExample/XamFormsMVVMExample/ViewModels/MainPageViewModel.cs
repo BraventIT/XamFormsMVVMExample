@@ -32,9 +32,25 @@ namespace XamFormsMVVMExample.ViewModels
             }
         }
 
+        private string _canExecuteText;
 
-        private ICommand _clickCommand;
-        public ICommand ClickCommand
+        public string CanExecuteText
+        {
+            get { return _canExecuteText; }
+            set {
+                if (value != _canExecuteText)
+                {
+                    _canExecuteText = value;
+                    RaisePropertyChanged();
+                    TestCommand.RaiseCanExecuteChanged();
+                }
+            }
+        }
+
+
+
+        private DelegateCommand _clickCommand;
+        public DelegateCommand ClickCommand
         {
             get { return _clickCommand = _clickCommand ?? new DelegateCommand(ClickCommandDelegate); }
         }
@@ -42,6 +58,17 @@ namespace XamFormsMVVMExample.ViewModels
         private void ClickCommandDelegate()
         {
             Clicks++;
+        }
+
+        private DelegateCommand _testCommand;
+        public DelegateCommand TestCommand
+        {
+            get { return _testCommand = _testCommand ?? new DelegateCommand(TestCommandDelegate, () => !string.IsNullOrEmpty(CanExecuteText)); }
+        }
+
+        private void TestCommandDelegate()
+        {
+
         }
     }
 }

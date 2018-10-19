@@ -9,24 +9,30 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
             <Label Text="{Binding Clicks}" />
-            <Label Text="Clicks" Margin="5,0,0,0"/>
+            <Label Text="Clicks"/>
         </StackLayout>
 
         <Button Grid.Row="1" HorizontalOptions="Center" Text="Click" Command="{Binding ClickCommand}"/>
 
-        <Label Grid.Row="2"
+        <Entry Grid.Row="2" Text="{Binding CanExecuteText}"/>
+
+        <Button Grid.Row="3" HorizontalOptions="Center" Text="Test Can Execute" Command="{Binding TestCommand}"/>
+
+        <Label Grid.Row="4"
                Text="Hola"
                HorizontalOptions="Center"
                VerticalOptions="CenterAndExpand" 
                Rotation="{Binding SliderValue}"/>
 
-        <Slider Grid.Row="3"
+        <Slider Grid.Row="5"
                 Maximum="360"
                 Value="{Binding SliderValue, Mode=TwoWay}" />
     </Grid>
