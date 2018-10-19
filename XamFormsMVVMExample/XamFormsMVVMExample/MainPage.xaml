@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamFormsMVVMExample"
+             x:Class="XamFormsMVVMExample.MainPage"
+             BindingContext="{Binding Path=MainPageViewModel, Source={StaticResource Locator}}">
+
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="50">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="{Binding Clicks}" />
+            <Label Text="Clicks" Margin="5,0,0,0"/>
+        </StackLayout>
+
+        <Button Grid.Row="1" HorizontalOptions="Center" Text="Click" Command="{Binding ClickCommand}"/>
+
+        <Label Grid.Row="2"
+               Text="Hola"
+               HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand" 
+               Rotation="{Binding SliderValue}"/>
+
+        <Slider Grid.Row="3"
+                Maximum="360"
+                Value="{Binding SliderValue, Mode=TwoWay}" />
+    </Grid>
+
+</ContentPage>
